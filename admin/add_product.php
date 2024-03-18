@@ -20,7 +20,7 @@ include('../functions/datbasequery.php');
                             </div>
                             <div class="col-md-6">
                                 <label for="slug">Proudct Category</label>
-                                <select name="category" id="category" class="form-control">
+                                <select name="category_id" id="category_id" class="form-control">
                                     <option value="">Select Category</option>
                                     <?php
                                     $categories =  getAll('categories');
@@ -55,7 +55,7 @@ include('../functions/datbasequery.php');
                                 <input type="file" class="form-control" name="apk" id="apk" accept=".apk">
                             </div>
                             <div class="col-md-12">
-                                <button type="submit" name="add_category" class="btn btn-primary mt-3">Add Product</button>
+                                <button type="submit" name="add_product" class="btn btn-primary mt-3">Add Product</button>
 
                             </div>
                         </div>

@@ -30,6 +30,9 @@
       border: 1px solid #b3a1a1 !important;
       padding: 8px 10px;
     }
+    table {
+        width: 100%;
+    }
   </style>
 </head>
 
