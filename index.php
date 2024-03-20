@@ -1,7 +1,10 @@
 <?php
 session_start();
-include 'includes/header.php'; ?>
+include 'includes/header.php'; 
+include 'functions/datbasequery_home.php';
+?>
 <?php include 'includes/navbar.php'; ?>
+
 
 
 <?php
@@ -23,27 +26,29 @@ if (isset($_SESSION['message'])) { ?>
 
 
 <!-- banner -->
-
-<div class="card mb-3 container border-0 py-5 mt-5 bg-transparent">
+<?php
+    $result = getFirstOne('products');
+    $product = mysqli_fetch_assoc($result);
+?>
+<div class="card mb-3 container border-0 py-5 mt-5 bg-transparent item">
     <div class="row g-0 justify-content-between  align-items-center">
         <div class="col-md-5">
-            <img src="./Photos/office-365.png" class="img-fluid rounded-start" alt="...">
+            <img src="uploads/<?php echo $product['image']; ?>" class="img-fluid rounded-start" alt="...">
         </div>
         <div class="col-md-6">
             <div class="card-body">
-                <h5 class="card-title text-danger fw-bold ls-1 fs-1">OFFICE 365</h5>
+                <h2 class="card-title text-danger fw-bold ls-1 fs-1"><?php echo $product['name']; ?></h2>
                 <h5 class="card-title ls-1  fw-bold fs-1">GET ALL THE OFFICE</h5>
                 <p class="card-text text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
                     quae quam
                     autem beatae quos nemo alias nam deleniti vitae officia.</p>
-
-                <button type="button" class="btn btn-primary"><i class="fa-solid fa-cart-shopping me-2"></i>Buy
-                    Now</button>
+                    <h4 class="card-title fw-bold text-danger">$ <?php echo $product['price']; ?></h4>
+                    <button type="button" onclick="addCart(<?php echo $product['id']; ?>)" class="btn btn-primary"><i class="fa-solid fa-cart-shopping me-2"></i>Add To Cart
+                        </button>
             </div>
         </div>
     </div>
 </div>
-
 
 <!-- service -->
 
@@ -114,54 +119,31 @@ if (isset($_SESSION['message'])) { ?>
 <div class="container mt-5 py-5">
     <h1 class="text-uppercase fw-bold mt-5">SOFTWARE LIST</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
-        <div class="col ">
-            <div class="card h-100 p-3 border-0 shadow-lg item">
-                <img src="./Photos/photohsop.jpg" class="img-thumbnail " alt="card example" style="background-color: rgba(128, 128, 128, 0.155); height: 400px;" />
-                <div class="card-body justify-content-between d-flex flex-column">
-                    <h2 class="card-title fw-bold">Nike Shoes</h2>
-                    <p class="card-text text-muted text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Eligendi, reiciendis!</p>
-                    <div class="price d-flex flex-lg-row flex-md-column flex-row  justify-content-between align-items-lg-center  mt-4">
-                        <h4 class="card-title fw-bold text-danger">$ 512</h4>
-                        <button type="button" onclick="addCart(1)" class="btn btn-primary"><i class="fa-solid fa-cart-shopping me-2"></i>Add To Cart
-                        </button>
+        <?php
+     
+        $result = getAllByCategory('products',9);
+        while ($product = mysqli_fetch_assoc($result)) {
+        ?>
+            <div class="col ">
+                <div class="card h-100 border-0 shadow-lg item">
+                    <img src="uploads/<?php echo $product['image']; ?>" class="img-thumbnail " alt="card example" style="background-color: rgba(128, 128, 128, 0.155); height: 400px;" />
+                    <div class="card-body justify-content-between d-flex flex-column">
+                        <h2 class="card-title fw-bold"><?php echo $product['name']; ?></h2>
+                        <p class="card-text text-muted text-sm"><?php echo $product['description']; ?></p>
+                        <div class="price d-flex flex-lg-row flex-md-column flex-row  justify-content-between align-items-lg-center  mt-4">
+                            <h4 class="card-title fw-bold text-danger">$ <?php echo $product['price']; ?></h4>
+                            <button type="button" onclick="addCart(<?php echo $product['id']; ?>)" class="btn btn-primary"><i class="fa-solid fa-cart-shopping me-2"></i>Add To Cart
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-        </div>
-        <div class="col ">
-            <div class="card h-100 p-3 border-0 shadow-lg">
-                <img src="./Photos/figma.png" class="img-thumbnail " alt="card example" style="background-color: rgba(128, 128, 128, 0.155); height: 400px;" />
-                <div class="card-body justify-content-between d-flex flex-column">
-                    <h5 class="card-title fw-bold">Figma</h5>
-                    <p class="card-text text-muted text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Eligendi, reiciendis!</p>
-                    <div class="d-flex flex-lg-row flex-md-column flex-row  justify-content-between align-items-lg-center  mt-4">
-                        <h4 class="card-title fw-bold text-danger">$ 1441</h4>
-                        <button type="button" class="btn btn-primary"><i class="fa-solid fa-cart-shopping me-2"></i>Buy
-                            Now</button>
-                    </div>
-                </div>
-            </div>
 
-        </div>
-        <div class="col ">
-            <div class="card h-100 p-3 border-0 shadow-lg">
-                <img src="./Photos/vscode.png" class="img-thumbnail" alt="card example" style="background-color: rgba(128, 128, 128, 0.155); height: 400px;" />
-                <div class="card-body justify-content-between d-flex flex-column">
-                    <h5 class="card-title fw-bold">VS CODE</h5>
-                    <p class="card-text text-muted text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Eligendi, reiciendis!</p>
-                    <div class="d-flex flex-lg-row flex-md-column flex-row  justify-content-between align-items-lg-center  mt-4">
-                        <h4 class="card-title fw-bold text-danger">$ 7025</h4>
-                        <button type="button" class="btn btn-primary"><i class="fa-solid fa-cart-shopping me-2"></i>Buy
-                            Now</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+        <?php
+        }
+        ?>
+    
 
     </div>
 </div>
@@ -172,54 +154,30 @@ if (isset($_SESSION['message'])) { ?>
 <div class="container ">
     <h1 class="text-uppercase fw-bold mt-5">Popular Software</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
-        <div class="col ">
-            <div class="card h-100 p-3 border-0 shadow-lg">
-                <img src="./Photos/office-365.png" class="img-thumbnail border-0" alt="card example" style=" height: 400px;" />
-                <div class="card-body justify-content-between d-flex flex-column ">
-                    <h5 class="card-title fw-bold">Microsoft 365</h5>
-                    <p class="card-text text-muted text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Eligendi, reiciendis!</p>
-                    <div class="d-flex flex-lg-row flex-md-column flex-row  justify-content-between align-items-lg-center  mt-4">
-                        <h4 class="card-title fw-bold text-danger">$ 6125</h4>
-                        <button type="button" class="btn btn-primary"><i class="fa-solid fa-cart-shopping me-2"></i>Buy
-                            Now</button>
+
+           <?php
+          $result = getAll('products');
+        while ($product = mysqli_fetch_assoc($result)) {
+        ?>
+            <div class="col ">
+                <div class="card h-100 p-3 border-0 shadow-lg item">
+                    <img src="uploads/<?php echo $product['image']; ?>" class="img-thumbnail " alt="card example" style="background-color: rgba(128, 128, 128, 0.155); height: 400px;" />
+                    <div class="card-body justify-content-between d-flex flex-column">
+                        <h2 class="card-title fw-bold"><?php echo $product['name']; ?></h2>
+                        <p class="card-text text-muted text-sm"><?php echo $product['description']; ?></p>
+                        <div class="price d-flex flex-lg-row flex-md-column flex-row  justify-content-between align-items-lg-center  mt-4">
+                            <h4 class="card-title fw-bold text-danger">$ <?php echo $product['price']; ?></h4>
+                            <button type="button" onclick="addCart(<?php echo $product['id']; ?>)" class="btn btn-primary"><i class="fa-solid fa-cart-shopping me-2"></i>Add To Cart
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-        </div>
-        <div class="col ">
-            <div class="card h-100 p-3 border-0 shadow-lg">
-                <img src="./Photos/figma.png" class="img-thumbnail border-0" alt="card example" style=" height: 400px;" />
-                <div class="card-body justify-content-between d-flex flex-column">
-                    <h5 class="card-title fw-bold">Figma/h5>
-                    <p class="card-text text-muted text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Eligendi, reiciendis!</p>
-                    <div class="d-flex flex-lg-row flex-md-column flex-row  justify-content-between align-items-lg-center  mt-4">
-                        <h4 class="card-title fw-bold text-danger">$ 8591</h4>
-                        <button type="button" class="btn btn-primary"><i class="fa-solid fa-cart-shopping me-2"></i>Buy
-                            Now</button>
-                    </div>
-                </div>
-            </div>
+        <?php
+        }
+        ?>
 
-        </div>
-        <div class="col ">
-            <div class="card h-100 p-3 border-0 shadow-lg">
-                <img src="./Photos/photohsop.jpg" class="img-thumbnail border-0" alt="card example" style="height: 400px;" />
-                <div class="card-body justify-content-between d-flex flex-column">
-                    <h5 class="card-title fw-bold">Adobe photohsop</h5>
-                    <p class="card-text text-muted text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Eligendi, reiciendis!</p>
-                    <div class="d-flex flex-lg-row flex-md-column flex-row  justify-content-between align-items-lg-center  mt-4">
-                        <h4 class="card-title fw-bold text-danger">$ 17025</h4>
-                        <button type="button" class="btn btn-primary"><i class="fa-solid fa-cart-shopping me-2"></i>Buy
-                            Now</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
 
     </div>
 </div>

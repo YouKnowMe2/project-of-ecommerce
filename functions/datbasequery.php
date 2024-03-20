@@ -17,3 +17,4 @@ function getOne($table, $id){
     $query_run = mysqli_query($con, $query);
     return $query_run;
 }
+

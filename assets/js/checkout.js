@@ -10,7 +10,7 @@ function checkCart(){
     }
 }
 checkCart();
-addCartToHTML();
+
 function addCartToHTML(){
    
     let listCartHTML = document.querySelector('.returnCart .list');
@@ -22,14 +22,16 @@ function addCartToHTML(){
     let totalPrice = 0;
    
     if(listCart && products){
+        console.log(listCart);
         listCart.forEach(cartItem => {
             if (cartItem) {
-            let product = products.find(p => p.id === cartItem.id);
+               
+                let product = products.find(p => String(p.id) === String(cartItem.id));
             if(product){
                 let newCart = document.createElement('div');
                 newCart.classList.add('item');
                 newCart.innerHTML = 
-                    `<img src="${product.image}">
+                    `<img src="../uploads/${product.image}">
                     <div class="info">
                         <div class="name">${product.name}</div>
                         <div class="price">$${product.price}/1 product</div>
@@ -46,3 +48,5 @@ function addCartToHTML(){
     totalQuantityHTML.innerText = totalQuantity;
     totalPriceHTML.innerText = '$' + totalPrice;
 }
+
+addCartToHTML();

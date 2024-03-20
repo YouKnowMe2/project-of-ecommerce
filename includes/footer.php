@@ -122,14 +122,30 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
     <?php
-$products = [
-    ["id" => 1, "name" => "Nike Shoes", "price" => 512, "image" => "./Photos/image 5.png"],
-    // More products...
-];
+  
+
+    $all_products = getAll('products');
+ 
+
+    $m_products;
+    foreach ($all_products as $product) {
+        $m_products[] = [
+            "id" => $product['id'],
+            "name" => $product['name'],
+            "price" => $product['price'],
+            "image" => $product['image']
+        ];
+    }
+    
+// $products = [
+//     ["id" => 1, "name" => "Nike Shoes", "price" => 512, "image" => "./Photos/image 5.png"],
+//     ["id" =>2, "name" => "Microsoft 365", "price" =>512, "image"  => "./Photos/office-365.png"]
+//     // More products...
+// ];
 ?>
 
     <script>
-    var products = <?php echo json_encode($products); ?>;
+    var products = <?php echo json_encode($m_products); ?>;
 </script>
 <script src="../assets/js/checkout.js"></script>
     <script src="../assets/js//cart.js"></script>
