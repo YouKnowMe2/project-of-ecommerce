@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'includes/header.php'; 
-include 'functions/datbasequery_home.php';
+
 ?>
 <?php include 'includes/navbar.php'; ?>
 
@@ -204,4 +204,6 @@ if (isset($_SESSION['message'])) { ?>
 
 
 
+
 <?php include 'includes/footer.php'; ?>
+

@@ -1,4 +1,5 @@
 </main>
+
 <footer class="mt-5 shadow " style="background-color: #4954682b;">
         <div class="footer-big ">
             <div class="container">
@@ -121,21 +122,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
-    <?php
-  
-
-    $all_products = getAll('products');
- 
-
-    $m_products;
-    foreach ($all_products as $product) {
-        $m_products[] = [
-            "id" => $product['id'],
-            "name" => $product['name'],
-            "price" => $product['price'],
-            "image" => $product['image']
-        ];
-    }
+ <?php
     
 // $products = [
 //     ["id" => 1, "name" => "Nike Shoes", "price" => 512, "image" => "./Photos/image 5.png"],
@@ -144,12 +131,10 @@
 // ];
 ?>
 
-    <script>
-    var products = <?php echo json_encode($m_products); ?>;
-</script>
+    
 <script src="../assets/js/checkout.js"></script>
     <script src="../assets/js//cart.js"></script>
- 
+
 
 
 </body>

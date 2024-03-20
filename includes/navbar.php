@@ -11,7 +11,7 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-       
+
 
         <div class="collapse navbar-collapse justify-content-lg-end text-center " id="navbarNav">
           <ul class="navbar-nav ">
@@ -48,59 +48,62 @@
             <?php
             }
             ?>
+            <li>
+            <div class="container">
+        <header>
+          <div class="iconCart">
+            <img src="../Logo/icon.png">
+            <div class="totalQuantity">0</div>
+          </div>
+
+        </header>
+
+
+      </div>
+            </li>
 
           </ul>
-          
+
         </div>
 
       </div>
-      
+     
+
     </nav>
-    <div class="container">
-          <header>
-            <div class="iconCart">
-              <img src="../Logo/icon.png">
-              <div class="totalQuantity">0</div>
-            </div>
 
-          </header>
-   
-
-        </div>
-    
 
     <div class="cart" style="z-index: 10000;">
-    <h2>
+      <h2>
         CART
-    </h2>
+      </h2>
 
-    <div class="listCart">
+      <div class="listCart">
 
 
         <div class="item">
-            <img src="images/1.webp">
-            <div class="content">
-                <div class="name">CoPilot / Black / Automatic</div>
-                <div class="price">$550 / 1 product</div>
-            </div>
-            <div class="quantity">
-                <button>-</button>
-                <span class="value">3</span>
-                <button>+</button>
-            </div>
+          <img src="images/1.webp">
+          <div class="content">
+            <div class="name">CoPilot / Black / Automatic</div>
+            <div class="price">$550 / 1 product</div>
+          </div>
+          <div class="quantity">
+            <button>-</button>
+            <span class="value">3</span>
+            <button>+</button>
+          </div>
         </div>
 
 
-    </div>
+      </div>
 
-    <div class="buttons">
+      <div class="buttons">
         <div class="close">
-            CLOSE
+          CLOSE
         </div>
         <div class="checkout">
-            <a href="checkout.php">CHECKOUT</a>
+          <a href="checkout.php">CHECKOUT</a>
         </div>
+      </div>
     </div>
-</div>
   </div>
 </header>

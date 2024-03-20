@@ -25,4 +25,25 @@
 </head>
 <body>
 
+<?php
+  include 'functions/datbasequery_home.php';
+ 
+    $all_products = getAll('products');
+ 
+
+    $products=[];
+    foreach ($all_products as $product) {
+        $products[] = [
+            "id" => $product['id'],
+            "name" => $product['name'],
+            "price" => $product['price'],
+            "image" => $product['image']
+        ];
+    }
+    
+?>
+<script>
+    var products = <?php echo json_encode($products); ?>;
+    console.log("products",products);
+</script>
     <main>

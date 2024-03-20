@@ -1,4 +1,6 @@
 
+
+
 function checkCart(){
     var cookieValue = document.cookie
     .split('; ')
